@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1057466639622882970}
   - component: {fileID: 1738787916193816533}
   - component: {fileID: 6718939104643142191}
+  - component: {fileID: 2569111391964069584}
   - component: {fileID: 8384980125055451222}
   m_Layer: 0
   m_Name: Crate 1
@@ -121,6 +122,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0046401024, y: -0.025216103}
   m_Size: {x: 0.8236666, y: 0.8236666}
   m_Direction: 0
+--- !u!114 &2569111391964069584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232052634346021606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a768f8f0f67417ca2ddedda925e0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCoin: {fileID: 6927540087273152163, guid: 10d7c6e6474ee4d48a206b5368ab0f5c, type: 3}
+  healthGlobe: {fileID: 6927540087273152163, guid: bff8726acee0842258f173cc0c27a60d, type: 3}
 --- !u!114 &8384980125055451222
 MonoBehaviour:
   m_ObjectHideFlags: 0
