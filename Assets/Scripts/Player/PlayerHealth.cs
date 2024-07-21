@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,12 @@ public class PlayerHealth : Singleton<PlayerHealth>
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private float knockBackForce = 10f;
     [SerializeField] private float damageRecoveryTime = 1f;
-    
+
     private Slider healthSlider;
+    private TextMeshProUGUI coinSlider;
+
     private int currentHealth;
+    private int currentCoin;
     private bool canTakeDamage = true;
     private KnockBack knockBack;
     private Flash flash;
@@ -26,7 +30,9 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private void Start()
     {
         currentHealth = maxHealth;
+        currentCoin = 0;
         UpdateHealthSlider();
+        UpdateCoinSlider();
     }
 
     private void OnCollisionStay2D(Collision2D other)
@@ -45,10 +51,10 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         currentHealth -= damage;
         canTakeDamage = false;
-        
         // Debug.Log(currentHealth);
         StartCoroutine(DamageRecoveryRoutine());
         UpdateHealthSlider();
+
     }
 
     private IEnumerator DamageRecoveryRoutine()
@@ -62,10 +68,9 @@ public class PlayerHealth : Singleton<PlayerHealth>
         if (currentHealth >= maxHealth) return;
         currentHealth += 1;
         UpdateHealthSlider();
-        // Debug.Log(currentHealth);
     }
 
-    private void UpdateHealthSlider()
+    public void UpdateHealthSlider()
     {
         if (healthSlider == null)
         {
@@ -74,5 +79,22 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
+    }
+
+    public void AddCoin()
+    {
+        currentCoin += 1;
+        UpdateCoinSlider();
+    }
+
+    public void UpdateCoinSlider()
+    {
+        if (coinSlider == null)
+        {
+            coinSlider = GameObject.Find("Gold Coin Amount Text").GetComponent<TextMeshProUGUI>();
+        }
+        Debug.Log(currentCoin);
+
+        coinSlider.SetText(currentCoin.ToString(), true);
     }
 }
