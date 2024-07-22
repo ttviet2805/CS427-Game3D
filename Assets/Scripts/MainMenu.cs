@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         // Load the next scene in the build index
-        PlayerHealth.Instance.AudioMan = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        // PlayerHealth.Instance.AudioMan = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -27,7 +27,10 @@ public class MainMenu : MonoBehaviour
     {
         // Load the main menu scene
         SceneManager.LoadScene("Menu");
-        PlayerHealth.Instance.ResetPlayer();
+        if (PlayerHealth.Instance != null)
+        {
+            PlayerHealth.Instance.ResetPlayer();
+        }
     }
 
     public void QuitGame()
