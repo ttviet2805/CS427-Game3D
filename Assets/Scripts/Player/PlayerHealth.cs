@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
@@ -55,6 +56,10 @@ public class PlayerHealth : Singleton<PlayerHealth>
         StartCoroutine(DamageRecoveryRoutine());
         UpdateHealthSlider();
 
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 
     private IEnumerator DamageRecoveryRoutine()
@@ -93,8 +98,16 @@ public class PlayerHealth : Singleton<PlayerHealth>
         {
             coinSlider = GameObject.Find("Gold Coin Amount Text").GetComponent<TextMeshProUGUI>();
         }
-        Debug.Log(currentCoin);
+        // Debug.Log(currentCoin);
 
         coinSlider.SetText(currentCoin.ToString(), true);
+    }
+
+    public void ResetPlayer()
+    {
+        currentHealth = maxHealth;
+        currentCoin = 0;
+        UpdateHealthSlider();
+        UpdateCoinSlider();
     }
 }
