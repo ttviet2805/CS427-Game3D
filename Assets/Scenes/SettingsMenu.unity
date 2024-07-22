@@ -3452,8 +3452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphicsDropdown: {fileID: 437723921}
-  musicVol: {fileID: 0}
-  mainAudioMixer: {fileID: 0}
+  musicVol: {fileID: 2133288097}
+  mainAudioMixer: {fileID: 24100000, guid: 3199c8acead51c24ca5897952643017c, type: 2}
 --- !u!1 &2093595156
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,7 +3615,19 @@ MonoBehaviour:
   m_Value: -80
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2073981993}
+        m_TargetAssemblyTypeName: SettingMenu, Assembly-CSharp
+        m_MethodName: ChangeMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

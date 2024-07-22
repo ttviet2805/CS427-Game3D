@@ -24,6 +24,7 @@ public class SettingMenu : MonoBehaviour
     void Start()
     {
         graphicsDropdown.value = QualitySettings.GetQualityLevel();
+        mainAudioMixer.SetFloat("MusicVolume", -80);
     }
 
     // Update is called once per frame
