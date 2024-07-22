@@ -17,10 +17,16 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("SettingsMenu");
     }
 
+    public void GoToInstructionMenu()
+    {
+        SceneManager.LoadScene("InstructionMenu");
+    }
+
     public void GoToMainMenu()
     {
         // Load the main menu scene
         SceneManager.LoadScene("Menu");
+        PlayerHealth.Instance.ResetPlayer();
     }
 
     public void QuitGame()

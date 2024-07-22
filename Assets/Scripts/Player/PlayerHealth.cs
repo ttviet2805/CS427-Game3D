@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Singleton<PlayerHealth>
 {
@@ -19,12 +20,14 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private bool canTakeDamage = true;
     private KnockBack knockBack;
     private Flash flash;
+    public AudioManager AudioMan;
 
     protected override void Awake()
     {
         base.Awake();
         flash = GetComponent<Flash>();
         knockBack = GetComponent<KnockBack>();
+        AudioMan = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Start()
@@ -54,7 +57,13 @@ public class PlayerHealth : Singleton<PlayerHealth>
         // Debug.Log(currentHealth);
         StartCoroutine(DamageRecoveryRoutine());
         UpdateHealthSlider();
+        AudioMan.PlaySFX(AudioMan.playerHurt);
 
+        if (currentHealth <= 0)
+        {
+            AudioMan.PlaySFX(AudioMan.playerDeath);
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 
     private IEnumerator DamageRecoveryRoutine()
@@ -65,9 +74,12 @@ public class PlayerHealth : Singleton<PlayerHealth>
 
     public void HealPlayer()
     {
-        if (currentHealth >= maxHealth) return;
-        currentHealth += 1;
-        UpdateHealthSlider();
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += 1;
+            UpdateHealthSlider();
+        }
+        AudioMan.PlaySFX(AudioMan.playerHeal);
     }
 
     public void UpdateHealthSlider()
@@ -85,6 +97,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         currentCoin += 1;
         UpdateCoinSlider();
+        AudioMan.PlaySFX(AudioMan.coinPickup);
     }
 
     public void UpdateCoinSlider()
@@ -93,8 +106,16 @@ public class PlayerHealth : Singleton<PlayerHealth>
         {
             coinSlider = GameObject.Find("Gold Coin Amount Text").GetComponent<TextMeshProUGUI>();
         }
-        Debug.Log(currentCoin);
+        // Debug.Log(currentCoin);
 
         coinSlider.SetText(currentCoin.ToString(), true);
+    }
+
+    public void ResetPlayer()
+    {
+        currentHealth = maxHealth;
+        currentCoin = 0;
+        UpdateHealthSlider();
+        UpdateCoinSlider();
     }
 }
