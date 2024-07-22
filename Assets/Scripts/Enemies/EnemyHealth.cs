@@ -29,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
         knockBack.GetKnockedBack(PlayerController.Instance.transform, knockBackForce);
         StartCoroutine(flash.FlashRoutine());
         StartCoroutine(CheckDetectDeathRoutine());
+        PlayerHealth.Instance.AudioMan.PlaySFX(PlayerHealth.Instance.AudioMan.attackSound);
     }
 
     private IEnumerator CheckDetectDeathRoutine()

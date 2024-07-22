@@ -65,6 +65,7 @@ public class Sword : MonoBehaviour
             slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
             slashAnim.transform.parent = this.transform.parent;
             StartCoroutine(AttackCDRoutine());
+            PlayerHealth.Instance.AudioMan.PlaySFX(PlayerHealth.Instance.AudioMan.playerAttack);
         }
     }
 

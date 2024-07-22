@@ -14,6 +14,7 @@ public class AreaEntrance : MonoBehaviour
             CameraController.Instance.SetPlayerCameraFollow();
             PlayerHealth.Instance.UpdateHealthSlider();
             PlayerHealth.Instance.UpdateCoinSlider();
+            PlayerHealth.Instance.AudioMan.PlaySFX(PlayerHealth.Instance.AudioMan.portalIn);
         }
     }
 }
