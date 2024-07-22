@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         // Load the next scene in the build index
+        PlayerHealth.Instance.AudioMan = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
