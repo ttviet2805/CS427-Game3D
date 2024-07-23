@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource musicSource;
 
     public AudioClip backgroundMusic;
     public AudioClip coinPickup;
@@ -15,6 +16,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerHeal;
     public AudioClip portalIn;
     public AudioClip attackSound;
+
+    private void Start()
+    {
+        musicSource.clip = backgroundMusic;
+        musicSource.Play();
+    }
     public void PlaySFX(AudioClip clip)
     {
         if (clip == null)
@@ -22,6 +29,12 @@ public class AudioManager : MonoBehaviour
             return;
         }
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void SetVolume(float volume)
+    {
+        // SFXSource.volume = volume;
+        musicSource.volume = volume;
     }
 
 }

@@ -14,8 +14,7 @@ public class AreaEntrance : MonoBehaviour
             CameraController.Instance.SetPlayerCameraFollow();
             PlayerHealth.Instance.UpdateHealthSlider();
             PlayerHealth.Instance.UpdateCoinSlider();
-            PlayerHealth.Instance.AudioMan = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-            PlayerHealth.Instance.AudioMan.PlaySFX(PlayerHealth.Instance.AudioMan.portalIn);
+            MusicManager.Instance.PlaySFX("Portal In");
         }
     }
 }

@@ -20,14 +20,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private bool canTakeDamage = true;
     private KnockBack knockBack;
     private Flash flash;
-    public AudioManager AudioMan;
-
     protected override void Awake()
     {
         base.Awake();
         flash = GetComponent<Flash>();
         knockBack = GetComponent<KnockBack>();
-        AudioMan = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Start()
@@ -57,11 +54,11 @@ public class PlayerHealth : Singleton<PlayerHealth>
         // Debug.Log(currentHealth);
         StartCoroutine(DamageRecoveryRoutine());
         UpdateHealthSlider();
-        AudioMan.PlaySFX(AudioMan.playerHurt);
+        MusicManager.Instance.PlaySFX("Player Hurt");
 
         if (currentHealth <= 0)
         {
-            AudioMan.PlaySFX(AudioMan.playerDeath);
+            MusicManager.Instance.PlaySFX("Player Death");
             SceneManager.LoadScene("LoseScene");
         }
     }
@@ -79,7 +76,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
             currentHealth += 1;
             UpdateHealthSlider();
         }
-        AudioMan.PlaySFX(AudioMan.playerHeal);
+        MusicManager.Instance.PlaySFX("Player Heal");
     }
 
     public void UpdateHealthSlider()
@@ -97,7 +94,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         currentCoin += 1;
         UpdateCoinSlider();
-        AudioMan.PlaySFX(AudioMan.coinPickup);
+        MusicManager.Instance.PlaySFX("Coin Pickup");
     }
 
     public void UpdateCoinSlider()

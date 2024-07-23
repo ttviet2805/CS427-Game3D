@@ -7,6 +7,5 @@ public class UpdateCoin : MonoBehaviour
     private void Start()
     {
         PlayerHealth.Instance.UpdateCoinSlider();
-        PlayerHealth.Instance.AudioMan = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 }

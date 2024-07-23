@@ -17,14 +17,15 @@ public class SettingMenu : MonoBehaviour
 
     public void ChangeMusicVolume()
     {
-        mainAudioMixer.SetFloat("MusicVolume", musicVol.value);
+        MusicManager.Instance.SetVolume(musicVol.value);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        graphicsDropdown.value = QualitySettings.GetQualityLevel();
-        mainAudioMixer.SetFloat("MusicVolume", -80);
+        // graphicsDropdown.value = QualitySettings.GetQualityLevel();
+        // mainAudioMixer.SetFloat("MusicVolume", -80);
+        musicVol.value = musicVol.maxValue;
     }
 
     // Update is called once per frame
