@@ -61,6 +61,7 @@ Otis Hero combines an engaging story with thrilling gameplay, providing a unique
 * https://learn.unity.com/tutorials: to learn the tutorial of Unity and get some Unity templates for our project.
 * https://docs.unity3d.com/560/Documentation/Manual/UnityBasics.html: basic tutorial of Unity.
 * https://www.youtube.com/playlist?list=PL6bqhqO0Ba776ksb3F9P_xmUMT9WvmfFT: a playlist link to learn basic Unity game.
+* https://drive.google.com/file/d/1VmvjUtRpFl__OEpJj9mnbG416uJ2vLC1/view: assets resources 
 
 ## Contact
 Tran Tuan Viet - ttviet21@apcs.fitus.edu.vn
