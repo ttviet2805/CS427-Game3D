@@ -57,8 +57,6 @@ Otis Hero combines an engaging story with thrilling gameplay, providing a unique
 * Using an IDE to compile this game (Visual Studio, ...).
 * Remember to add all source codes to project before building and running.
 
-## Usage
-
 ## Resource References
 * https://learn.unity.com/tutorials: to learn the tutorial of Unity and get some Unity templates for our project.
 * https://docs.unity3d.com/560/Documentation/Manual/UnityBasics.html: basic tutorial of Unity.
